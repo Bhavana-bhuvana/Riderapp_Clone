@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ourmap</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="registration">registration</string>
+    <string name="title_activity_driver_map">DriverMapActivity</string>
+</resources>

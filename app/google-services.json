@@ -1,0 +1,87 @@
+{
+  "project_info": {
+    "project_number": "481595846721",
+    "firebase_url": "https://uberclone-c110c-default-rtdb.firebaseio.com",
+    "project_id": "uberclone-c110c",
+    "storage_bucket": "uberclone-c110c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481595846721:android:57704c117defccd1a896c0",
+        "android_client_info": {
+          "package_name": "com.kobha.clientapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwUlQsnS7NQ4oZfEi-vxwZjxG8yttKpRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481595846721:android:eea3cc44077703c3a896c0",
+        "android_client_info": {
+          "package_name": "com.kobha.diverapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwUlQsnS7NQ4oZfEi-vxwZjxG8yttKpRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481595846721:android:1ae3398b33c467e4a896c0",
+        "android_client_info": {
+          "package_name": "com.kobha.ourapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwUlQsnS7NQ4oZfEi-vxwZjxG8yttKpRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481595846721:android:848c1252668f0b45a896c0",
+        "android_client_info": {
+          "package_name": "com.kobha.ourmap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwUlQsnS7NQ4oZfEi-vxwZjxG8yttKpRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,68 @@
+plugins {
+    alias(libs.plugins.android.application)
+    id 'com.google.gms.google-services'
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+}
+
+android {
+    namespace 'com.kobha.ourmap'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.kobha.ourmap"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+        viewBinding {
+            enabled = true
+
+    }
+
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.google.firebase.auth
+    implementation libs.google.firebase.database
+    implementation libs.play.services.maps
+    implementation libs.play.services.location
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    // Firebase BoM (Bill of Materials)
+    implementation libs.firebase.bom
+    // Firebase modules
+    implementation libs.google.firebase.analytics
+    implementation libs.firebase.auth
+    implementation libs.firebase.database
+    implementation libs.play.services.maps.v1802
+    implementation libs.geofire.android
+    implementation libs.play.services.location.v2101
+
+    implementation libs.play.services.location.vyourversion
+    testImplementation libs.junit
+    androidTestImplementation libs.junit.v115
+}
