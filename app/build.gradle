@@ -61,6 +61,9 @@ dependencies {
     implementation libs.play.services.maps.v1802
     implementation libs.geofire.android
     implementation libs.play.services.location.v2101
+//geofire
+    implementation libs.geofire.android
+
 
     implementation libs.play.services.location.vyourversion
     testImplementation libs.junit

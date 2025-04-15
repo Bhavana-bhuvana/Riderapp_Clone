@@ -4,6 +4,7 @@ androidxJunit = "1.1.5"
 firebaseAnalytics = "22.4.0"
 firebaseBom = "33.12.0"
 geofireAndroid = "3.1.0"
+geofireJava = "3.0.0"
 googlePlayServicesLocation = "YOUR_VERSION"
 googlePlayServicesLocationVersion = "21.0.1"
 junit = "4.13.2"
@@ -27,6 +28,7 @@ firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-database = { module = "com.google.firebase:firebase-database" }
 geofire-android = { module = "com.firebase:geofire-android", version.ref = "geofireAndroid" }
+geofire-java = { module = "com.firebase:geofire-java", version.ref = "geofireJava" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebaseAnalytics" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
