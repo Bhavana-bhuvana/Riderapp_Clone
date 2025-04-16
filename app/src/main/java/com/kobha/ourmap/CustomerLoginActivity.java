@@ -36,7 +36,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent i=new Intent(CustomerLoginActivity.this, MapActivity.class);
+                    Intent i=new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
                     startActivity(i);
                     finish();
                     return;
@@ -62,6 +62,9 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             String user_id=mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db= FirebaseDatabase.getInstance().getReference().child("Users").child("Customer").child(user_id);
                             current_user_db.setValue(true);
+                            Intent i = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
+                            startActivity(i);
+                            finish();
                         }
                     }
                 });
@@ -84,6 +87,9 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             String user_id=mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db=FirebaseDatabase.getInstance().getReference().child("Users").child("Customer").child(user_id);
                             current_user_db.setValue(true);
+                            Intent i = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
+                            startActivity(i);
+                            finish();
                         }
 
                     }
