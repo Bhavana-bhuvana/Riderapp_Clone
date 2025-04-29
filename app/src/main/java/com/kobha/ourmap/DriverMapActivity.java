@@ -28,117 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kobha.ourmap.databinding.ActivityDriverMapBinding;
 import com.google.firebase.auth.FirebaseUser;
-
-
-/*public class DriverMapActivity extends FragmentActivity implements OnMapReadyCallback {
-    private DatabaseReference driverAvailableRef;
-    private GeoFire geoFire;
-    private String driverId;
-
-    private GoogleMap mMap;
-    private ActivityDriverMapBinding binding;
-
-    private FusedLocationProviderClient fusedLocationClient;
-    private LocationRequest locationRequest;
-    private LocationCallback locationCallback;
-
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityDriverMapBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
-
-        setupLocationRequest();
-        setupLocationCallback();
-
-    }
-
-
-    private void setupLocationRequest() {
-        // Modern way (Android 12 and above)
-        locationRequest = new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 5000)
-                .setMinUpdateIntervalMillis(2000)
-                .build();
-    }
-
-    private void setupLocationCallback() {
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(@NonNull LocationResult locationResult) {
-                if (locationResult == null) return;
-
-                for (Location location : locationResult.getLocations()) {
-                    LatLng driverLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-                    mMap.clear();
-                    mMap.addMarker(new MarkerOptions().position(driverLatLng).title("You're here"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(driverLatLng, 15));
-                }
-            }
-        };
-    }
-
-    private void getCurrentLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE);
-            return;
-        }
-
-        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-    }
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        mMap = googleMap;
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE);
-            return;
-        }
-
-        mMap.setMyLocationEnabled(true);
-        getCurrentLocation();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getCurrentLocation();
-            }
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        fusedLocationClient.removeLocationUpdates(locationCallback);
-    }
-}*/
-
-
-
 public class DriverMapActivity extends FragmentActivity implements OnMapReadyCallback {
-
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 101;
 
     private GoogleMap mMap;
@@ -239,7 +129,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         mMap.setMyLocationEnabled(true);
         startLocationUpdates();
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
@@ -252,7 +141,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             startLocationUpdates();
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
