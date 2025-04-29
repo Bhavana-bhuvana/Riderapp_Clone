@@ -383,6 +383,84 @@ rideResponses/
 ### Summary of Flow:
 1. **Customer Side**: 
    - Sends a ride request to Firebase with pickup and drop locations.
+Extra :
+To show **both the pickup and drop locations on the map** and send this ride request to the **logged-in driver**, you need to update your `CustomerMapActivity` in two main ways:
+
+---
+
+### ✅ **1. Show Pickup & Drop on the Map**
+
+Update your `btnRequestRide.setOnClickListener` to:
+- Parse pickup/drop as coordinates.
+- Add **two markers** on the map.
+- Optionally draw a polyline between them.
+
+```java
+binding.btnRequestRide.setOnClickListener(v -> {
+    String pickup = binding.etPickup.getText().toString();
+    String drop = binding.etDrop.getText().toString();
+
+    if (!pickup.isEmpty() && !drop.isEmpty()) {
+        try {
+            String[] pickupCoords = pickup.split(",");
+            String[] dropCoords = drop.split(",");
+            double pickupLat = Double.parseDouble(pickupCoords[0].trim());
+            double pickupLng = Double.parseDouble(pickupCoords[1].trim());
+            double dropLat = Double.parseDouble(dropCoords[0].trim());
+            double dropLng = Double.parseDouble(dropCoords[1].trim());
+
+            LatLng pickupLatLng = new LatLng(pickupLat, pickupLng);
+            LatLng dropLatLng = new LatLng(dropLat, dropLng);
+
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("Pickup"));
+            mMap.addMarker(new MarkerOptions().position(dropLatLng).title("Drop"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pickupLatLng, 13));
+
+            // Optional: draw route line
+            // mMap.addPolyline(new PolylineOptions().add(pickupLatLng, dropLatLng).color(Color.BLUE));
+
+            Toast.makeText(this, "Ride Requested", Toast.LENGTH_SHORT).show();
+
+            sendRideRequestToDriver(pickupLat, pickupLng, dropLat, dropLng);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Invalid coordinates", Toast.LENGTH_SHORT).show();
+        }
+    } else {
+        Toast.makeText(this, "Please enter pickup and drop locations", Toast.LENGTH_SHORT).show();
+    }
+});
+```
+
+---
+
+### ✅ **2. Send Ride Request to Firebase for Driver**
+
+Add this method:
+
+```java
+private void sendRideRequestToDriver(double pickupLat, double pickupLng, double dropLat, double dropLng) {
+    if (customerId == null) return;
+
+    DatabaseReference rideRequestsRef = FirebaseDatabase.getInstance().getReference("rideRequests").child(customerId);
+
+    Map<String, Object> request = new HashMap<>();
+    request.put("pickup_lat", pickupLat);
+    request.put("pickup_lng", pickupLng);
+    request.put("drop_lat", dropLat);
+    request.put("drop_lng", dropLng);
+    request.put("status", "pending");
+
+    rideRequestsRef.setValue(request);
+}
+```
+
+Then, in your **DriverMapActivity**, listen to this path (`rideRequests/`) for changes and accept or reject requests.
+
+---
+
+Would you like me to help you implement the listener on the **driver's side** too?
    
 2. **Driver Side**:
    - Listens for incoming ride requests.
